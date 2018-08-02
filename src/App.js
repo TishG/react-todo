@@ -2,11 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import ToDo from './components/ToDo.js';
 
-<<<<<<< HEAD
 class App extends Component {
-=======
- class App extends Component {
->>>>>>> checkpoint-react-todo-events
   constructor(props) {
     super(props);
     this.state = {
@@ -14,13 +10,8 @@ class App extends Component {
              { description: "Walk the cat", isCompleted: true },
              { description: "Throw the dishes away", isCompleted: false },
              { description: "Buy new dishes", isCompleted: false }
-<<<<<<< HEAD
-           ]
-      };
-  }
-=======
-           ],
-           newToDoDescription: " "
+               ],
+                newToDoDescription: " "
       };
   }
 
@@ -47,20 +38,15 @@ class App extends Component {
 
     }
 
->>>>>>> checkpoint-react-todo-events
   render() {
     return (
       <div className="App">
         <ul>
           { this.state.todos.map( (todo,index) =>
-<<<<<<< HEAD
-            <ToDo key={ index } description={ todo.description } isCompleted={ todo.isCompleted }/>
-=======
             <ToDo key={ index }
             description={ todo.description }
             isCompleted={ todo.isCompleted }
             toggleComplete={ () => this.toggleComplete(index) }/>
->>>>>>> checkpoint-react-todo-events
           )}
         </ul>
         <form onSubmit={ (e) => this.handleSubmit(e)}>
