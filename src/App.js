@@ -15,6 +15,13 @@ class App extends Component {
       };
   }
 
+    deleteTodo(index) {
+      console.log(index);
+      const newList = this.state.todos.slice();
+      newList.splice(index, 1);
+      this.setState({todos: [...newList]})
+    }
+
     handleChange(e) {
       //targets value attribute in text input
       this.setState({ newToDoDescription: e.target.value })
@@ -23,10 +30,12 @@ class App extends Component {
     handleSubmit(e) {
       //prevents page from reloading after clicking submit
       e.preventDefault();
-      if (!this.state.newToDoDescription) { return }
       //todo with an unchecked checkbox
+       // if (!this.state.newTodoDescription) { return }
       const newTodo = { description: this.state.newToDoDescription, isCompleted: false };
-      //list of todos plus added todo
+      const newTodoItem = this.state.newToDoDescription;
+      // list of todos plus added todo
+      newTodoItem !== " " &&
       this.setState({ todos: [...this.state.todos, newTodo], newToDoDescription: " " });
     }
 
@@ -34,7 +43,7 @@ class App extends Component {
       const todos = this.state.todos.slice();
       const todo = todos[index];
       todo.isCompleted = todo.isCompleted ? false : true;
-      this.setState({ todos: todos })
+      this.setState({ todos : todos })
 
     }
 
@@ -46,7 +55,8 @@ class App extends Component {
             <ToDo key={ index }
             description={ todo.description }
             isCompleted={ todo.isCompleted }
-            toggleComplete={ () => this.toggleComplete(index) }/>
+            toggleComplete={ () => this.toggleComplete(index) }
+            deleteTodo={ (e) => this.deleteTodo(index) }/>
           )}
         </ul>
         <form onSubmit={ (e) => this.handleSubmit(e)}>
